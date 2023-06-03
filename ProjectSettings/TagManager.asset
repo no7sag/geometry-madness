@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RedCollider
   - BlueCollider
+  - ColorPickup
   layers:
   - Default
   - TransparentFX

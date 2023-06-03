@@ -3,7 +3,14 @@ guid: d53e5ea56c02d9e41be3883230ef7a70
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _player: {instanceID: 0}
+  - _canvasCountdownColorText: {instanceID: 0}
+  - _whiteMaterial: {fileID: 2100000, guid: 941c1bfc2e10c8e41afd679c144515b7, type: 2}
+  - _redMaterial: {fileID: 2100000, guid: df63bf4ab190a6f47a09e9d3f175964e, type: 2}
+  - _redGlassMaterial: {fileID: 2100000, guid: 91097daabdd688349a3c7841887e41d1, type: 2}
+  - _blueMaterial: {fileID: 2100000, guid: 652a82cbb3070fa4cb4cb6e6a6693197, type: 2}
+  - _blueGlassMaterial: {fileID: 2100000, guid: 951a55683ead12741ae2f008380c8f94, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

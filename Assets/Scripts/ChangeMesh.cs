@@ -8,11 +8,27 @@ public class ChangeMesh : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0.35f, 0);
+        if (GameManager.Instance.IsPaused())
+            return;
+        
+        transform.Rotate(0, 0.45f, 0);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        _player.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+        _player.GetComponent<MeshFilter>().mesh = gameObject.GetComponent<MeshFilter>().mesh;
+
+        if (IsSpherePickup())
+        {
+            _player.GetComponent<PlayerMovement>().playerMesh = PlayerMovement.PlayerMesh.Sphere;
+        }
+
+        if (IsCubePickup())
+        {
+            _player.GetComponent<PlayerMovement>().playerMesh = PlayerMovement.PlayerMesh.Cube;
+        }
     }
+
+    bool IsSpherePickup() => gameObject.GetComponent<MeshFilter>().mesh.name == "Sphere Instance";
+    bool IsCubePickup() => gameObject.GetComponent<MeshFilter>().mesh.name == "Cube Instance";
 }

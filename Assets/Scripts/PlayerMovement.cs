@@ -4,52 +4,73 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController controller;
-    [SerializeField] float _moveSpeed = 7.5f;
-    [SerializeField] Transform mainCameraTransform;
-    float _gravity = -9.81f;
-    [SerializeField] float _gravityMultiplier = 2.0f;
+    CharacterController _controller;
+    [SerializeField] Transform _mainCameraTransform;
+    [SerializeField] float _moveSpeed = 7.6f;
+    float _turnSmoothVelocity;
+    [SerializeField] float _turnSmoothFactor = 0.08f;
+    [Space]
+    [SerializeField] float _gravityForce  = -24.525f;  // -9.81 * 2.5
+    [SerializeField] float _sphereGravityMultiplier = 1.4f;
     float _ySpeed;
     Vector3 _direction;
     [SerializeField] float _jumpForce = 9.0f;
-    public static bool freezeMovement;
+    [SerializeField] float _sphereJumpMultiplier = 1.5f;
+    [Space]
+    [SerializeField] float _dashSpeed = 24f;
+    [SerializeField] float _dashDuration = 0.14f;
+    bool _canDash;
+    [HideInInspector] public enum PlayerMesh { Cube, Sphere }
+    [HideInInspector] public PlayerMesh playerMesh;
 
     void Awake()
     {
-        controller = GetComponent<CharacterController>();
-    }
-
-    void Start()
-    {
-        float correctHeight = controller.center.y + controller.skinWidth;
-        controller.center = new Vector3(0, correctHeight, 0);
+        _controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        // if (GameManager.Instance.IsPaused())
-            // return;
+        if (GameManager.Instance.IsPaused())
+            return;
         
         Gravity();
         Jump();
         Movement();
+        Dash();
+
+        // debugggg
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (playerMesh == PlayerMesh.Cube)
+            {
+                playerMesh = PlayerMesh.Sphere;
+                gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
+                Debug.Log("DEBUG: PlayerMesh -> Sphere");
+            }
+
+            else if (playerMesh == PlayerMesh.Sphere)
+            {
+                playerMesh = PlayerMesh.Cube;
+                gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+                Debug.Log("DEBUG: PlayerMesh -> Cube");
+            }
+        }
     }
 
     void Movement()
     {
-        if (freezeMovement)
-            return;
-        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 directionRaw = new Vector3(horizontal, 0, vertical).normalized;
 
         if (directionRaw.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(directionRaw.x, directionRaw.z) * Mathf.Rad2Deg + mainCameraTransform.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(directionRaw.x, directionRaw.z) * Mathf.Rad2Deg + _mainCameraTransform.eulerAngles.y;
+            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothFactor);
+            transform.rotation = Quaternion.Euler(0, smoothAngle, 0);
             
             _direction = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            controller.Move(_direction.normalized * _moveSpeed * Time.deltaTime);
+            _controller.Move(_direction.normalized * _moveSpeed * Time.deltaTime);
         }
     }
 
@@ -58,28 +79,66 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded() && _ySpeed < 0.0f)
         {
             _ySpeed = -1.0f;
+            _canDash = false;
         }
         else
         {
-            _ySpeed += _gravity * _gravityMultiplier * Time.deltaTime;
+            if (playerMesh == PlayerMesh.Cube)
+            {
+                _ySpeed += _gravityForce * Time.deltaTime;
+            }
+            else
+            {
+                _ySpeed += _gravityForce * _sphereGravityMultiplier * Time.deltaTime;
+            }
         }
         
         _direction = new Vector3(0, _ySpeed, 0);
-        controller.Move(_direction * Time.deltaTime);
+        _controller.Move(_direction * Time.deltaTime);
     }
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            if (IsGrounded())
+            NormalizeYSpeed();
+            _canDash = true;
+
+            if (playerMesh == PlayerMesh.Cube)
             {
-                NormalizeYSpeed();
                 _ySpeed += _jumpForce;
+            }
+            else
+            {
+                _ySpeed += _jumpForce * _sphereJumpMultiplier;
             }
         }
     }
 
-    private bool IsGrounded() => controller.isGrounded;
-    private float NormalizeYSpeed() => _ySpeed = 0;
+    void Dash()
+    {
+        if (playerMesh == PlayerMesh.Sphere)
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !IsGrounded() && _canDash)
+        {
+            StartCoroutine(DoDash());
+            _canDash = false;
+        }
+    }
+
+    IEnumerator DoDash()
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + _dashDuration)
+        {
+            _controller.Move(new Vector3(_direction.x, 0, _direction.z) * _dashSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+    }
+
+    bool IsGrounded() => _controller.isGrounded;
+    float NormalizeYSpeed() => _ySpeed = 0;
 }
