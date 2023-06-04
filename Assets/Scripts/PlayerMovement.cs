@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController _controller;
-    [SerializeField] Transform _mainCameraTransform;
+    Transform _mainCameraTransform;
     [SerializeField] float _moveSpeed = 7.6f;
     float _turnSmoothVelocity;
     [SerializeField] float _turnSmoothFactor = 0.08f;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        _mainCameraTransform = GameObject.Find("Main Camera").transform;
     }
 
     void Update()

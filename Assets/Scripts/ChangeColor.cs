@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    [SerializeField] GameObject _player, _canvasCountdownColorText;
+    GameObject _player, _canvasCountdownColorText;
     [SerializeField] Material _whiteMaterial;
     [SerializeField] Material _redMaterial, _redGlassMaterial;
     [SerializeField] Material _blueMaterial, _blueGlassMaterial;
     float _colorDuration = 5.0f;
+
+    void Awake()
+    {
+        _player = GameObject.Find("Player");
+        _canvasCountdownColorText = GameObject.Find("Countdown Color Text");
+    }
 
     void Update()
     {

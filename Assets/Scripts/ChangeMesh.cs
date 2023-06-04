@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ChangeMesh : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
+    GameObject _player;
+
+    void Awake()
+    {
+        _player = GameObject.Find("Player");
+    }
 
     void Update()
     {
