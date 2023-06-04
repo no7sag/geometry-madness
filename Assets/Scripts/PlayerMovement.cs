@@ -38,23 +38,24 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Dash();
 
-        // debugggg
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (playerMesh == PlayerMesh.Cube)
-            {
-                playerMesh = PlayerMesh.Sphere;
-                gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
-                Debug.Log("DEBUG: PlayerMesh -> Sphere");
-            }
+        // --- debugggg ---
+        //
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     if (playerMesh == PlayerMesh.Cube)
+        //     {
+        //         playerMesh = PlayerMesh.Sphere;
+        //         gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
+        //         Debug.Log("DEBUG: PlayerMesh -> Sphere");
+        //     }
 
-            else if (playerMesh == PlayerMesh.Sphere)
-            {
-                playerMesh = PlayerMesh.Cube;
-                gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
-                Debug.Log("DEBUG: PlayerMesh -> Cube");
-            }
-        }
+        //     else if (playerMesh == PlayerMesh.Sphere)
+        //     {
+        //         playerMesh = PlayerMesh.Cube;
+        //         gameObject.GetComponent<MeshFilter>().mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+        //         Debug.Log("DEBUG: PlayerMesh -> Cube");
+        //     }
+        // }
     }
 
     void Movement()
@@ -134,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         while (Time.time < startTime + _dashDuration)
         {
             _controller.Move(new Vector3(_direction.x, 0, _direction.z) * _dashSpeed * Time.deltaTime);
+            _ySpeed = 0;
 
             yield return null;
         }
