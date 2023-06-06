@@ -9,9 +9,9 @@ public class EnemyAI : MonoBehaviour
 
     Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField] float walkPointRange;
 
-    public float sightRange;
+    [SerializeField] float sightRange;
     bool playerInSight;
 
     void Awake()
