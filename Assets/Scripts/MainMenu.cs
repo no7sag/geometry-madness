@@ -2,12 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject levelSelectPanel;
     [SerializeField] Animator sceneTransitionAnim;
+    [SerializeField] float _xScrollRate, _yScrollRate;
+    RawImage _bg;
 
+    void Awake()
+    {
+        _bg = GetComponent<RawImage>();
+    }
+
+    void Update()
+    {
+        _bg = GetComponent<RawImage>();
+        _bg.uvRect = new Rect(_bg.uvRect.position + new Vector2(_xScrollRate, _yScrollRate) * Time.deltaTime, _bg.uvRect.size);
+
+    }
     public void PlayLevel(string levelName)
     {
         sceneTransitionAnim.SetTrigger("Start");
@@ -36,20 +50,5 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    /*
-    public void ResetProgress()
-    {
-        PlayerPrefs.SetInt("completedLevels", 0);
-        
-        int levelCounter = 0;
-        while (levelCounter < 8)
-        {
-            string levelScoreKey = "Level_" + (levelCounter + 1) + "_score";
-            PlayerPrefs.SetInt(levelScoreKey, 0);
-            levelCounter++;
-        }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    */
 }
