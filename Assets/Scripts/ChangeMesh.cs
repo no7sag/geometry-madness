@@ -6,9 +6,9 @@ public class ChangeMesh : MonoBehaviour
 {
     GameObject _player;
 
-    void Awake()
+    void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GameManager.Instance.player;
     }
 
     void Update()

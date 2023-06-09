@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.IsLosing())
         {
             ShowPauseScreen();
         }
@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         if (GameManager.Instance.IsPaused())
         {
             Time.timeScale = 0.0f;
+            Cursor.lockState = CursorLockMode.None;
             pauseScreenCanvas.SetActive(true);
         }
         else
@@ -34,49 +35,43 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         GameManager.Instance.TogglePause();
-
         HidePauseMenu();
     }
 
     public void RestartLevel()
     {
         StartCoroutine(RestartLevelCoroutine());
-
         HidePauseMenu();
     }
 
     IEnumerator RestartLevelCoroutine()
     {
         sceneTransitionAnim.SetTrigger("Start");
-
+        Cursor.lockState = CursorLockMode.None;
         yield return new WaitForSeconds(0.9f);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         GameManager.Instance.TogglePause();
     }
 
     public void MainMenu()
     {
         StartCoroutine(MainMenuCoroutine());
-
         HidePauseMenu();
     }
 
     IEnumerator MainMenuCoroutine()
     {
         sceneTransitionAnim.SetTrigger("Start");
-
         yield return new WaitForSeconds(0.9f);
 
         SceneManager.LoadScene("MainMenu");
-
-        GameManager.Instance.TogglePause();
     }
 
     void HidePauseMenu()
     {
         Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
         pauseScreenCanvas.SetActive(false);
     }
 }

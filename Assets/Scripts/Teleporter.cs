@@ -8,7 +8,12 @@ public class Teleporter : MonoBehaviour
     [SerializeField] Transform _target;
     void Awake()
     {
-        _controller = GameObject.Find("Player").GetComponent<CharacterController>();
+        // _controller = GameObject.Find("Player").GetComponent<CharacterController>();
+    }
+
+    void Start()
+    {
+        _controller = GameManager.Instance.player.GetComponent<CharacterController>();
     }
     void OnTriggerEnter(Collider other)
     {

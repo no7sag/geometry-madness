@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    Transform _player;
+    Transform _playerTransform;
     NavMeshAgent _agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
 
@@ -16,8 +16,12 @@ public class EnemyAI : MonoBehaviour
 
     void Awake()
     {
-        _player = GameObject.Find("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Start()
+    {
+        _playerTransform = GameManager.Instance.player.transform;
     }
 
     void Update()
@@ -56,6 +60,14 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        _agent.SetDestination(_player.position);
+        _agent.SetDestination(_playerTransform.position);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.loseLevelScreen.SetActive(true);
+        }
     }
 }

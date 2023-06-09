@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    GameObject _player, _canvasCountdownColorText;
+    Renderer _playerRenderer;
+    GameObject _canvasCountdownColorText;
     [SerializeField] Material _whiteMaterial;
     [SerializeField] Material _redMaterial, _redGlassMaterial;
     [SerializeField] Material _blueMaterial, _blueGlassMaterial;
@@ -12,10 +13,13 @@ public class ChangeColor : MonoBehaviour
 
     void Awake()
     {
-        _player = GameObject.Find("Player");
         _canvasCountdownColorText = GameObject.Find("Countdown Color Text");
     }
 
+    void Start()
+    {
+        _playerRenderer = GameManager.Instance.player.GetComponent<Renderer>();
+    }
     void Update()
     {
         if (GameManager.Instance.IsPaused())
@@ -35,16 +39,16 @@ public class ChangeColor : MonoBehaviour
             }
         }
 
-        Material pickupColor = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
-        _player.GetComponent<MeshRenderer>().sharedMaterial = pickupColor;
+        Material pickupColor = gameObject.GetComponent<Renderer>().sharedMaterial;
+        _playerRenderer.sharedMaterial = pickupColor;
 
-        if (_player.GetComponent<MeshRenderer>().sharedMaterial == _redMaterial)
+        if (_playerRenderer.sharedMaterial == _redMaterial)
         {
             EnableRedColliders();
             DisableBlueColliders();
         }
 
-        if (_player.GetComponent<MeshRenderer>().sharedMaterial == _blueMaterial)
+        if (_playerRenderer.sharedMaterial == _blueMaterial)
         {
             EnableBlueColliders();
             DisableRedColliders();
@@ -60,7 +64,7 @@ public class ChangeColor : MonoBehaviour
         foreach (GameObject redCollider in redColliders)
         {
             redCollider.GetComponent<Collider>().enabled = true;
-            redCollider.GetComponent<MeshRenderer>().material = _redMaterial;
+            redCollider.GetComponent<Renderer>().material = _redMaterial;
         }
     }
 
@@ -70,7 +74,7 @@ public class ChangeColor : MonoBehaviour
         foreach (GameObject blueCollider in blueColliders)
         {
             blueCollider.GetComponent<Collider>().enabled = true;
-            blueCollider.GetComponent<MeshRenderer>().material = _blueMaterial;
+            blueCollider.GetComponent<Renderer>().material = _blueMaterial;
         }
     }
 
@@ -80,7 +84,7 @@ public class ChangeColor : MonoBehaviour
         foreach (GameObject redCollider in redColliders)
         {
             redCollider.GetComponent<Collider>().enabled = false;
-            redCollider.GetComponent<MeshRenderer>().material = _redGlassMaterial;
+            redCollider.GetComponent<Renderer>().material = _redGlassMaterial;
         }
     }
 
@@ -90,14 +94,14 @@ public class ChangeColor : MonoBehaviour
         foreach (GameObject blueCollider in blueColliders)
         {
             blueCollider.GetComponent<Collider>().enabled = false;
-            blueCollider.GetComponent<MeshRenderer>().material = _blueGlassMaterial;
+            blueCollider.GetComponent<Renderer>().material = _blueGlassMaterial;
         }
     }
 
     IEnumerator ResetColorCountdown()
     {
         yield return new WaitForSeconds(_colorDuration);
-        _player.GetComponent<MeshRenderer>().sharedMaterial = _whiteMaterial;
+        _playerRenderer.sharedMaterial = _whiteMaterial;
         
         DisableRedColliders();
         DisableBlueColliders();

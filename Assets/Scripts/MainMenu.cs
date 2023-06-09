@@ -14,14 +14,16 @@ public class MainMenu : MonoBehaviour
     void Awake()
     {
         _bg = GetComponent<RawImage>();
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
     {
         _bg = GetComponent<RawImage>();
         _bg.uvRect = new Rect(_bg.uvRect.position + new Vector2(_xScrollRate, _yScrollRate) * Time.deltaTime, _bg.uvRect.size);
-
     }
+
     public void PlayLevel(string levelName)
     {
         sceneTransitionAnim.SetTrigger("Start");
@@ -49,6 +51,4 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
-
 }
