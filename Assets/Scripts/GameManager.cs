@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     bool isPaused, isLosing;
     public GameObject loseLevelScreen, player;
+    public enum Language { ENG, SPA };
+    public Language language;
+
 
     void Awake()
     {

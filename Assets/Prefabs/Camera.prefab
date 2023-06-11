@@ -322,7 +322,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661290859239103821}
-  m_LocalRotation: {x: 4.219256e-10, y: -0.92965114, z: 0.36844116, w: -0.000000014725456}
+  m_LocalRotation: {x: 0.0000000011319425, y: -0.93136674, z: 0.36408246, w: -0.00000003394995}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -359,9 +359,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 64
     OrthographicSize: 10
-    NearClipPlane: 0.5
+    NearClipPlane: 0.2
     FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
@@ -435,7 +435,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661290859465200993}
-  m_LocalRotation: {x: 0.2015972, y: 0.000000018842345, z: -0.000000003878189, w: 0.9794685}
+  m_LocalRotation: {x: 0.1992778, y: 0.00000003265172, z: -0.00000000663994, w: 0.97994304}
   m_LocalPosition: {x: 0, y: 2, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -466,9 +466,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
+  near clip plane: 0.2
   far clip plane: 150
-  field of view: 60
+  field of view: 64
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -714,9 +714,9 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 64
     OrthographicSize: 10
-    NearClipPlane: 0.5
+    NearClipPlane: 0.2
     FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
@@ -734,8 +734,8 @@ MonoBehaviour:
     Value: 0.5
     m_SpeedMode: 0
     m_MaxSpeed: 6
-    m_AccelTime: 0.1
-    m_DecelTime: 0.05
+    m_AccelTime: 0.06
+    m_DecelTime: 0.03
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -749,17 +749,17 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_enabled: 1
+    m_WaitTime: 6
+    m_RecenteringTime: 0.9
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 600
-    m_AccelTime: 0.1
-    m_DecelTime: 0.05
+    m_AccelTime: 0.06
+    m_DecelTime: 0.03
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -815,16 +815,16 @@ MonoBehaviour:
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
+  m_MinimumDistanceFromTarget: 0.01
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.45
+  m_CameraRadius: 0.35
   m_Strategy: 1
   m_MaximumEffort: 4
   m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
+  m_Damping: 0.15
+  m_DampingWhenOccluded: 0.15
   m_OptimalTargetDistance: 0
 --- !u!1 &2661290860358346495
 GameObject:
@@ -850,7 +850,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661290860358346495}
-  m_LocalRotation: {x: -0.0000000014754571, y: -0.9069493, z: 0.42123997, w: -0.00000005115391}
+  m_LocalRotation: {x: -4.832854e-10, y: -0.9069493, z: 0.42123997, w: -0.00000001675546}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -887,9 +887,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 64
     OrthographicSize: 10
-    NearClipPlane: 0.5
+    NearClipPlane: 0.2
     FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
@@ -928,7 +928,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661290860369988843}
-  m_LocalRotation: {x: 8.881785e-16, y: -0.9187172, z: 0.3949162, w: -0.000000014731499}
+  m_LocalRotation: {x: 8.041878e-11, y: -0.91964954, z: 0.39274007, w: -0.000000033968718}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -965,9 +965,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 64
     OrthographicSize: 10
-    NearClipPlane: 0.5
+    NearClipPlane: 0.2
     FarClipPlane: 150
     Dutch: 0
     ModeOverride: 0
