@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoseLevelMenu : MonoBehaviour
+public class WinLevelScreen : MonoBehaviour
 {
-    [SerializeField] Animator _sceneTransitionAnim;
     Animator _animator;
 
     void Awake()
     {
+        _animator = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    void Start()
+    {
         GameManager.Instance.TogglePause();
         GameManager.Instance.ToggleLosing();
-
-        _animator = GetComponent<Animator>();
+        GameManager.Instance.player.GetComponent<Animator>().enabled = true;
+        GameManager.Instance.player.GetComponent<Animator>().SetTrigger("Winning");
     }
 
-    public void RestartLevel()
+    public void NextLevel(string levelName)
     {
-        StartCoroutine(RestartLevelCoroutine());
+        StartCoroutine(NextLevelCoroutine(levelName));
     }
 
-    IEnumerator RestartLevelCoroutine()
+    IEnumerator NextLevelCoroutine(string levelName)
     {
         _animator.SetTrigger("FadeOut");
-        _sceneTransitionAnim.SetTrigger("Start");
+        GameManager.Instance.sceneTransitionAnim.SetTrigger("Start");
         Cursor.lockState = CursorLockMode.None;
         yield return new WaitForSeconds(0.9f);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(levelName);
     }
 
     public void MainMenu()
@@ -40,7 +44,7 @@ public class LoseLevelMenu : MonoBehaviour
     IEnumerator MainMenuCoroutine()
     {
         _animator.SetTrigger("FadeOut");
-        _sceneTransitionAnim.SetTrigger("Start");
+        GameManager.Instance.sceneTransitionAnim.SetTrigger("Start");
         yield return new WaitForSeconds(0.9f);
 
         SceneManager.LoadScene("MainMenu");

@@ -6,10 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     bool isPaused, isLosing;
-    public GameObject loseLevelScreen, player;
-    public enum Language { ENG, SPA };
-    public Language language;
-
+    public GameObject player, winLevelScreen, loseLevelScreen;
+    public Animator sceneTransitionAnim;
 
     void Awake()
     {
@@ -23,14 +21,15 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        if (!PlayerPrefs.HasKey("language"))
+        {
+            PlayerPrefs.SetString("language", "ENG");
+        }
     }
 
     public bool IsPaused() => isPaused;
     public void TogglePause() => isPaused = !isPaused;
     public bool IsLosing() => isLosing;
-    public void ToggleLosing()
-    {
-        isLosing = !isLosing;
-        player.GetComponent<Animator>().enabled = true;
-    }
+    public void ToggleLosing() => isLosing = !isLosing;
 }

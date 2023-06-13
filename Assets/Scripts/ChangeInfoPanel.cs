@@ -12,6 +12,8 @@ public class ChangeInfoPanel : MonoBehaviour
     {
         if (_triggered)
             return;
+
+        _triggered = true;
         
         if (_activeInfoPanel != null)
             _activeInfoPanel.SetActive(false);
@@ -19,16 +21,14 @@ public class ChangeInfoPanel : MonoBehaviour
         if (_activeInfoPanelSpanish != null)
             _activeInfoPanelSpanish.SetActive(false);
 
-        switch (GameManager.Instance.language)
+        switch (PlayerPrefs.GetString("language"))
         {
-            case GameManager.Language.ENG:
+            case "ENG":
                 _newInfoPanel.SetActive(true);
                 break;
-            case GameManager.Language.SPA:
+            case "SPA":
                 _newInfoPanelSpanish.SetActive(true);
                 break;
         }
-
-        _triggered = true;
     }
 }

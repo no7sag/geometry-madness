@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class PauseScreen : MonoBehaviour
 {
-    [SerializeField] GameObject pauseScreenCanvas;
-    [SerializeField] Animator sceneTransitionAnim;
+    [SerializeField] GameObject _pauseScreenCanvas;
 
     void Update()
     {
@@ -24,7 +23,7 @@ public class PauseMenu : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             Cursor.lockState = CursorLockMode.None;
-            pauseScreenCanvas.SetActive(true);
+            _pauseScreenCanvas.SetActive(true);
         }
         else
         {
@@ -46,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator RestartLevelCoroutine()
     {
-        sceneTransitionAnim.SetTrigger("Start");
+        GameManager.Instance.sceneTransitionAnim.SetTrigger("Start");
         Cursor.lockState = CursorLockMode.None;
         yield return new WaitForSeconds(0.9f);
 
@@ -62,7 +61,7 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator MainMenuCoroutine()
     {
-        sceneTransitionAnim.SetTrigger("Start");
+        GameManager.Instance.sceneTransitionAnim.SetTrigger("Start");
         yield return new WaitForSeconds(0.9f);
 
         SceneManager.LoadScene("MainMenu");
@@ -72,6 +71,6 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
-        pauseScreenCanvas.SetActive(false);
+        _pauseScreenCanvas.SetActive(false);
     }
 }
