@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.4
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.03017151, g: 0.17098457, b: 0.31465754, a: 0.4}
+  m_IndirectSpecularColor: {r: 0.03023365, g: 0.1710158, b: 0.31465605, a: 0.4}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1251,6 +1251,7 @@ GameObject:
   - component: {fileID: 36785400}
   - component: {fileID: 36785402}
   - component: {fileID: 36785401}
+  - component: {fileID: 36785403}
   m_Layer: 5
   m_Name: Try Again Button Text
   m_TagString: Untagged
@@ -1298,7 +1299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Try Again
+  m_text: TRY AGAIN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fe5c6b7badeca441bee53dea8f46867, type: 2}
   m_sharedMaterial: {fileID: -8276841396011869563, guid: 4fe5c6b7badeca441bee53dea8f46867, type: 2}
@@ -1375,6 +1376,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36785399}
   m_CullTransparentMesh: 1
+--- !u!114 &36785403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36785399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d1bb42d7dcea742adcf91135f64442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: REINTENTAR
+  spanishFontSize: 24
 --- !u!43 &41249244
 Mesh:
   m_ObjectHideFlags: 0
@@ -3675,7 +3690,7 @@ RectTransform:
   m_Children:
   - {fileID: 402679259}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3835,7 +3850,7 @@ RectTransform:
   m_Children:
   - {fileID: 1846614796}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4160,7 +4175,7 @@ RectTransform:
   m_Children:
   - {fileID: 556999869}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5080,7 +5095,7 @@ RectTransform:
   m_Children:
   - {fileID: 67456545}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10562,7 +10577,7 @@ RectTransform:
   m_Children:
   - {fileID: 928027713}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -17394,6 +17409,7 @@ GameObject:
   - component: {fileID: 696657110}
   - component: {fileID: 696657109}
   - component: {fileID: 696657111}
+  - component: {fileID: 696657112}
   m_Layer: 5
   m_Name: Lose Level Screen Title
   m_TagString: Untagged
@@ -17538,6 +17554,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &696657112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696657107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d1bb42d7dcea742adcf91135f64442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: PERDISTE
+  spanishFontSize: 60
 --- !u!1 &700583038
 GameObject:
   m_ObjectHideFlags: 0
@@ -17975,7 +18005,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 997506946}
-  - {fileID: 1549035175}
   - {fileID: 976121263}
   - {fileID: 1684889036}
   - {fileID: 1193362565}
@@ -17992,6 +18021,7 @@ RectTransform:
   - {fileID: 116289069}
   - {fileID: 989482782}
   - {fileID: 109225097}
+  - {fileID: 1549035175}
   - {fileID: 534447933}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -25343,7 +25373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &976121263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25360,7 +25390,7 @@ RectTransform:
   - {fileID: 644773641}
   - {fileID: 434822466}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -25977,7 +26007,7 @@ RectTransform:
   m_Children:
   - {fileID: 1321286195}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -31263,7 +31293,7 @@ RectTransform:
   m_Children:
   - {fileID: 801369341}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -32526,7 +32556,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 714591366}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -32585,7 +32615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d1bb42d7dcea742adcf91135f64442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spanishText: PERDISTE
+  spanishText: GANASTE
   spanishFontSize: 60
 --- !u!95 &1196070215
 Animator:
@@ -35237,7 +35267,7 @@ RectTransform:
   m_Children:
   - {fileID: 1180002687}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -35971,7 +36001,7 @@ RectTransform:
   m_Children:
   - {fileID: 635302930}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -36721,7 +36751,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 714591366}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -39738,7 +39768,7 @@ RectTransform:
   m_Children:
   - {fileID: 468383208}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -41016,7 +41046,7 @@ RectTransform:
   m_Children:
   - {fileID: 1387056896}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -42020,7 +42050,7 @@ RectTransform:
   - {fileID: 1393334657}
   - {fileID: 1906289171}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 1
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -42577,6 +42607,7 @@ GameObject:
   - component: {fileID: 1660329534}
   - component: {fileID: 1660329536}
   - component: {fileID: 1660329535}
+  - component: {fileID: 1660329537}
   m_Layer: 5
   m_Name: Main Menu Button Text
   m_TagString: Untagged
@@ -42624,7 +42655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fe5c6b7badeca441bee53dea8f46867, type: 2}
   m_sharedMaterial: {fileID: -8276841396011869563, guid: 4fe5c6b7badeca441bee53dea8f46867, type: 2}
@@ -42701,6 +42732,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660329533}
   m_CullTransparentMesh: 1
+--- !u!114 &1660329537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660329533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d1bb42d7dcea742adcf91135f64442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanishText: MENU PRINCIPAL
+  spanishFontSize: 24
 --- !u!1 &1684889035
 GameObject:
   m_ObjectHideFlags: 0
@@ -42737,7 +42782,7 @@ RectTransform:
   - {fileID: 1166140850}
   - {fileID: 228967475}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -48224,7 +48269,7 @@ RectTransform:
   m_Children:
   - {fileID: 694324937}
   m_Father: {fileID: 714591366}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
