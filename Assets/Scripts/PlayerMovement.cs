@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && IsGrounded())
         {
             NormalizeYSpeed();
             _canDash = true;
@@ -121,8 +121,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerMesh == PlayerMesh.Sphere)
             return;
-        
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !IsGrounded() && _canDash)
+
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(1)) && !IsGrounded() && _canDash)
         {
             StartCoroutine(DoDash());
             _canDash = false;
