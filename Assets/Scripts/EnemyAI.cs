@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float sightRange;
     bool playerInSight;
 
+    float collidersTimer;
+
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -32,6 +34,11 @@ public class EnemyAI : MonoBehaviour
             Patroling();
         else
             ChasePlayer();
+
+        collidersTimer += Time.deltaTime;
+
+        if (collidersTimer > GameManager.Instance.immuneDuration)
+            SetCollidersStatus(true);
     }
 
     void Patroling()
@@ -65,9 +72,18 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && collidersTimer > GameManager.Instance.immuneDuration)
         {
-            GameManager.Instance.loseLevelScreen.SetActive(true);
+            collidersTimer = 0;
+            
+            GameManager.Instance.player.GetComponent<PlayerHealth>().Damage();
+            SetCollidersStatus(false);
         }
+    }
+
+    void SetCollidersStatus(bool active)
+    {
+        foreach (Collider c in GetComponents<Collider>())
+            c.enabled = active;
     }
 }

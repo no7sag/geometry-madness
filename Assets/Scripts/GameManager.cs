@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     bool isPaused, isLosing;
     public GameObject player, winLevelScreen, loseLevelScreen;
     public Animator sceneTransitionAnim;
+    public float immuneDuration = 2f;
 
     void Awake()
     {

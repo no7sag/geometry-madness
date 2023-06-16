@@ -6,6 +6,7 @@ using TMPro;
 public class ChangeText : MonoBehaviour
 {
     TextMeshProUGUI textComponent;
+    [TextArea(2,3)]
     [SerializeField] string spanishText;
     [SerializeField] int spanishFontSize;
 
