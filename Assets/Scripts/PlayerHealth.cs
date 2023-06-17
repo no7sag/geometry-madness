@@ -7,27 +7,32 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Material _whiteMaterial, _whiteGlassMaterial;
     public int health;
     public int maxHealth = 2;
-    float immuneTimer;
-    bool recievedDamage;
+    float _immuneTimer;
+    bool _recievedDamage;
+    [SerializeField] GameObject _healthMeterObject;
+    HealthMeter _healthMeter;
+
 
     void Awake()
     {
         health = maxHealth;
+        _healthMeter = _healthMeterObject.GetComponent<HealthMeter>();
     }
 
     void Update()
     {
-        if (recievedDamage)
+        if (_recievedDamage)
         {
-            if (immuneTimer < GameManager.Instance.immuneDuration)
+            if (_immuneTimer < GameManager.Instance.immuneDuration)
             {
-                immuneTimer += Time.deltaTime;
+                _immuneTimer += Time.deltaTime;
                 GetComponent<Renderer>().sharedMaterial = _whiteGlassMaterial;
             }
             else
             {
-                immuneTimer = 0;
-                recievedDamage = false;
+                _recievedDamage = false;
+
+                _immuneTimer = 0;
                 GetComponent<Renderer>().sharedMaterial = _whiteMaterial;
             }
         }
@@ -35,8 +40,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage()
     {
+        _recievedDamage = true;
+
         health--;
-        recievedDamage = true;
+
+        _healthMeter.UpdateHealthMeter();
 
         if (health < 1)
         {

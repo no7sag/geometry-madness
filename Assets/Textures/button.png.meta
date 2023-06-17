@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button (5)_0
+      name: button
       rect:
         serializedVersion: 2
         x: 0
@@ -112,7 +112,7 @@ TextureImporter:
         width: 34
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Button (5)_1
+      name: button-pressed
       rect:
         serializedVersion: 2
         x: 0
@@ -133,7 +133,7 @@ TextureImporter:
         width: 34
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,9 +157,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Button (5)_2: -13553457
-      Button (5)_1: -649883316
+      button: -127150617
       Button (5)_3: -510337214
-      Button (5)_0: -127150617
+      button-pressed: -649883316
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
