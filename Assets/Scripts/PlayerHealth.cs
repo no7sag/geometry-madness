@@ -9,14 +9,13 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 2;
     float _immuneTimer;
     bool _recievedDamage;
-    [SerializeField] GameObject _healthMeterObject;
     HealthMeter _healthMeter;
 
 
     void Awake()
     {
         health = maxHealth;
-        _healthMeter = _healthMeterObject.GetComponent<HealthMeter>();
+        _healthMeter = GameObject.Find("Health Meter").GetComponent<HealthMeter>();
     }
 
     void Update()
