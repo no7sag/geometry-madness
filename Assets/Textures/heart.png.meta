@@ -125,28 +125,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heart-half
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e339a47effb0fac4dba8c65d46f75201
-      internalID: -1319490628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart-hal
+      name: heart-empty
       rect:
         serializedVersion: 2
         x: 64
@@ -177,7 +156,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      heart-hal: -724704722
+      heart-empty: -724704722
       heart-full: -1031565471
       heart-half: -1319490628
   spritePackingTag: 

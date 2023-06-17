@@ -9,7 +9,6 @@ public class RotateSkyBox : MonoBehaviour
     void Update()
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * _rotateRate);
-        Debug.Log(RenderSettings.skybox.GetFloat("_Rotation"));
     }
 
     void OnDisable()

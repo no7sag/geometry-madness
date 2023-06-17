@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8564764423019858023}
   - component: {fileID: 1036504963}
   - component: {fileID: 8564764423019858022}
+  - component: {fileID: 1036504965}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -159,3 +160,20 @@ MonoBehaviour:
   _dashSpeed: 24
   _dashDuration: 0.14
   playerMesh: 0
+--- !u!114 &1036504965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564764423019858017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a077281c2dbdf246a9c9cacaf5e922a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _whiteMaterial: {fileID: 2100000, guid: 941c1bfc2e10c8e41afd679c144515b7, type: 2}
+  _whiteGlassMaterial: {fileID: 2100000, guid: 24a0fe7f6df89604b9abf49b76551a90, type: 2}
+  health: 0
+  maxHealth: 2
+  _healthMeterObject: {fileID: 0}
