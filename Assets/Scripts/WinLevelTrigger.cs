@@ -9,6 +9,7 @@ public class WinLevelTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.winLevelScreen.SetActive(true);
+            LevelTimeManager.Instance.SetLevelEnded(true);
         }
     }
 }
