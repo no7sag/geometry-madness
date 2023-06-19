@@ -7,9 +7,10 @@ using TMPro;
 public class LevelTimeManager : MonoBehaviour
 {
     public static LevelTimeManager Instance { get; private set; }
+    [SerializeField] GameObject levelTimerObject;
+    TextMeshProUGUI levelTimerText;
     float levelTimer;
     bool levelEnded;
-    TextMeshProUGUI levelTimerText;
     int minutes, seconds, cents;
 
     void Awake()
@@ -23,7 +24,8 @@ public class LevelTimeManager : MonoBehaviour
             Instance = this;
         }
 
-        levelTimerText = GameObject.Find("Level Timer").GetComponent<TextMeshProUGUI>();
+        if (levelTimerObject != null)
+            levelTimerText = levelTimerObject.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -46,16 +48,17 @@ public class LevelTimeManager : MonoBehaviour
             }
         }
 
-        levelTimerText.text = FormatTimer();
+        if (levelTimerObject != null)
+            levelTimerText.text = FormatTimer(levelTimer);
     }
 
     public void SetLevelEnded(bool active) => levelEnded = active;
     public string LevelTimeKey() => SceneManager.GetActiveScene().name + "--time";
-    public string FormatTimer()
+    public string FormatTimer(float levelTimerRaw)
     {
-        minutes = (int)(levelTimer / 60f);
-        seconds = (int)(levelTimer - minutes * 60f);
-        cents = (int)((levelTimer - (int)levelTimer) * 100f);
+        minutes = (int)(levelTimerRaw / 60f);
+        seconds = (int)(levelTimerRaw - minutes * 60f);
+        cents = (int)((levelTimerRaw - (int)levelTimerRaw) * 100f);
         return string.Format("{0:00}:{1:00}.{2:000}", minutes, seconds, cents);
     }
 }
