@@ -9,6 +9,7 @@ public class ChangeColor : MonoBehaviour
     [SerializeField] Material _whiteMaterial;
     [SerializeField] Material _redMaterial, _redGlassMaterial;
     [SerializeField] Material _blueMaterial, _blueGlassMaterial;
+    [SerializeField] Material _greenMaterial, _greenGlassMaterial;
     float _colorDuration = 5.0f;
 
     void Awake()
@@ -46,16 +47,29 @@ public class ChangeColor : MonoBehaviour
         {
             EnableRedColliders();
             DisableBlueColliders();
+            DisableGreenColliders();
+            _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
+            
         }
 
         if (_playerRenderer.sharedMaterial == _blueMaterial)
         {
             EnableBlueColliders();
             DisableRedColliders();
+            DisableGreenColliders();
+            _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
+            
         }
-
-        _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
+        if (_playerRenderer.sharedMaterial == _greenMaterial)
+        {
+            EnableGreenColliders();
+            DisableBlueColliders();
+            DisableRedColliders();
+        }
+        // _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
         StartCoroutine("ResetColorCountdown");
+
+        
     }
 
     void EnableRedColliders()
@@ -75,6 +89,15 @@ public class ChangeColor : MonoBehaviour
         {
             blueCollider.GetComponent<Collider>().enabled = true;
             blueCollider.GetComponent<Renderer>().material = _blueMaterial;
+        }
+    }
+    void EnableGreenColliders()
+    {
+        GameObject[] greenColliders = GameObject.FindGameObjectsWithTag("GreenCollider");
+        foreach (GameObject greenCollider in greenColliders)
+        {
+            greenCollider.GetComponent<Collider>().enabled = true;
+            greenCollider.GetComponent<Renderer>().material = _greenMaterial;
         }
     }
 
@@ -97,6 +120,16 @@ public class ChangeColor : MonoBehaviour
             blueCollider.GetComponent<Renderer>().material = _blueGlassMaterial;
         }
     }
+    
+     void DisableGreenColliders()
+    {
+        GameObject[] greenColliders = GameObject.FindGameObjectsWithTag("GreenCollider");
+        foreach (GameObject greenCollider in greenColliders)
+        {
+            greenCollider.GetComponent<Collider>().enabled = false;
+            greenCollider.GetComponent<Renderer>().material = _greenGlassMaterial;
+        }
+    }
 
     IEnumerator ResetColorCountdown()
     {
@@ -105,5 +138,6 @@ public class ChangeColor : MonoBehaviour
         
         DisableRedColliders();
         DisableBlueColliders();
+        // DisableGreenColliders();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] GameObject _levelSelectPanel, _creditsPanel;
+    [SerializeField] GameObject _levelSelectPanel;
     [SerializeField] float _xScrollRate, _yScrollRate;
     RawImage _bg;
     ChangeText changeText;
@@ -54,21 +54,22 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void ShowCredits()
-    {
-        if (!_creditsPanel.activeSelf)
-        {
-            _creditsPanel.SetActive(true);
-        }
-    }
+    // public void ChangeLanguage()
+    // {
+    //     if (PlayerPrefs.GetString("language") == "ENG")
+    //     {
+    //         PlayerPrefs.SetString("language", "SPA");
+    //         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //         return;
+    //     }
 
-    public void HideCredits()
-    {
-        if (_creditsPanel.activeSelf)
-        {
-            _creditsPanel.SetActive(false);
-        }
-    }
+    //     if (PlayerPrefs.GetString("language") == "SPA")
+    //     {
+    //         PlayerPrefs.SetString("language", "ENG");
+    //         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //         return;
+    //     }
+    // }
 
     public void ChangeLanguage()
     {
