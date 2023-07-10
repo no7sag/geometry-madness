@@ -11,6 +11,7 @@ public class ChangeColor : MonoBehaviour
     [SerializeField] Material _blueMaterial, _blueGlassMaterial;
     [SerializeField] Material _greenMaterial, _greenGlassMaterial;
     float _colorDuration = 5.0f;
+    float _colorDuration2 = 9.0f;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class ChangeColor : MonoBehaviour
             foreach (GameObject colorPickup in colorPickups)
             {
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown");
+                colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown2");
             }
         }
 
@@ -49,7 +51,8 @@ public class ChangeColor : MonoBehaviour
             DisableBlueColliders();
             DisableGreenColliders();
             _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
-            
+            StartCoroutine("ResetColorCountdown");
+
         }
 
         if (_playerRenderer.sharedMaterial == _blueMaterial)
@@ -58,16 +61,17 @@ public class ChangeColor : MonoBehaviour
             DisableRedColliders();
             DisableGreenColliders();
             _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
-            
+            StartCoroutine("ResetColorCountdown");
+
         }
         if (_playerRenderer.sharedMaterial == _greenMaterial)
         {
             EnableGreenColliders();
             DisableBlueColliders();
             DisableRedColliders();
+            _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration2;
+            StartCoroutine("ResetColorCountdown2");
         }
-        // _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration;
-        StartCoroutine("ResetColorCountdown");
 
         
     }
@@ -138,6 +142,13 @@ public class ChangeColor : MonoBehaviour
         
         DisableRedColliders();
         DisableBlueColliders();
-        // DisableGreenColliders();
+    }
+
+    IEnumerator ResetColorCountdown2()
+    {
+        yield return new WaitForSeconds(_colorDuration2);
+        _playerRenderer.sharedMaterial = _whiteMaterial;
+
+        DisableGreenColliders();
     }
 }
