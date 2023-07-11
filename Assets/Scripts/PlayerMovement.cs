@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController _controller;
+    public AudioManager audioManager;
+    public AudioClip sonidoSalto;
+    public AudioClip sonidodash;
+       CharacterController _controller;
     Transform _mainCameraTransform;
     [SerializeField] float _moveSpeed = 7.6f;
     float _turnSmoothVelocity;
@@ -73,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
             
             _direction = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             _controller.Move(_direction.normalized * _moveSpeed * Time.deltaTime);
+        
         }
     }
 
@@ -114,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _ySpeed += _jumpForce * _sphereJumpMultiplier;
             }
+            audioManager.ReproducirSonido(sonidoSalto);
         }
     }
 
@@ -126,7 +131,9 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(DoDash());
             _canDash = false;
+            audioManager.ReproducirSonido(sonidodash);
         }
+        
     }
 
     IEnumerator DoDash()

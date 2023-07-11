@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChangeMesh : MonoBehaviour
 {
+    public AudioManager audioManager;
+    public AudioClip sonidotransformacion;
     GameObject _player;
 
     void Start()
@@ -32,6 +34,7 @@ public class ChangeMesh : MonoBehaviour
         {
             _player.GetComponent<PlayerMovement>().playerMesh = PlayerMovement.PlayerMesh.Cube;
         }
+        audioManager.ReproducirSonido(sonidotransformacion);
     }
 
     bool IsSpherePickup() => gameObject.GetComponent<MeshFilter>().mesh.name == "Sphere Instance";
