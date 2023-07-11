@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public AudioManager audioManager;
+    public AudioClip sonidogolpe;
     Transform _playerTransform;
     NavMeshAgent _agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
@@ -79,6 +81,7 @@ public class EnemyAI : MonoBehaviour
             GameManager.Instance.player.GetComponent<PlayerHealth>().Damage();
             SetCollidersStatus(false);
         }
+        audioManager.ReproducirSonido(sonidogolpe);
     }
 
     void SetCollidersStatus(bool active)

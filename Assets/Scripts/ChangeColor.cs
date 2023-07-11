@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
+     public AudioManager audioManager;
+    public AudioClip sonidocambio;
     Renderer _playerRenderer;
     GameObject _canvasCountdownColorText;
     [SerializeField] Material _whiteMaterial;
@@ -40,6 +42,7 @@ public class ChangeColor : MonoBehaviour
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown");
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown2");
             }
+            audioManager.ReproducirSonido(sonidocambio);
         }
 
         Material pickupColor = gameObject.GetComponent<Renderer>().sharedMaterial;
