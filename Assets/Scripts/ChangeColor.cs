@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
@@ -76,8 +75,6 @@ public class ChangeColor : MonoBehaviour
             _canvasCountdownColorText.GetComponent<CountdownTimerColor>()._countdownTimer = _colorDuration2;
             StartCoroutine("ResetColorCountdown2");
         }
-
-        
     }
 
     void EnableRedColliders()
@@ -99,6 +96,7 @@ public class ChangeColor : MonoBehaviour
             blueCollider.GetComponent<Renderer>().material = _blueMaterial;
         }
     }
+
     void EnableGreenColliders()
     {
         GameObject[] greenColliders = GameObject.FindGameObjectsWithTag("GreenCollider");
@@ -129,7 +127,7 @@ public class ChangeColor : MonoBehaviour
         }
     }
     
-     void DisableGreenColliders()
+    void DisableGreenColliders()
     {
         GameObject[] greenColliders = GameObject.FindGameObjectsWithTag("GreenCollider");
         foreach (GameObject greenCollider in greenColliders)
