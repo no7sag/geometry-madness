@@ -41,11 +41,11 @@ public class ChangeColor : MonoBehaviour
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown");
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown2");
             }
-            audioManager.ReproducirSonido(sonidocambio, 0.52f);
         }
 
         Material pickupColor = gameObject.GetComponent<Renderer>().sharedMaterial;
         _playerRenderer.sharedMaterial = pickupColor;
+        audioManager.ReproducirSonido(sonidocambio, 0.52f);
 
         if (_playerRenderer.sharedMaterial == _redMaterial)
         {
