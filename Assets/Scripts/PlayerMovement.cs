@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioManager audioManager;
     public AudioClip sonidoSalto;
     public AudioClip sonidodash;
-       CharacterController _controller;
+    CharacterController _controller;
     Transform _mainCameraTransform;
     [SerializeField] float _moveSpeed = 7.6f;
     float _turnSmoothVelocity;
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _ySpeed += _jumpForce * _sphereJumpMultiplier;
             }
-            audioManager.ReproducirSonido(sonidoSalto);
+            audioManager.ReproducirSonido(sonidoSalto, 0.22f);
         }
     }
 

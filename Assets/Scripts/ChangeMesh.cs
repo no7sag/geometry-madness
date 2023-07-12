@@ -34,7 +34,7 @@ public class ChangeMesh : MonoBehaviour
         {
             _player.GetComponent<PlayerMovement>().playerMesh = PlayerMovement.PlayerMesh.Cube;
         }
-        audioManager.ReproducirSonido(sonidotransformacion);
+        audioManager.ReproducirSonido(sonidotransformacion, 0.48f);
     }
 
     bool IsSpherePickup() => gameObject.GetComponent<MeshFilter>().mesh.name == "Sphere Instance";

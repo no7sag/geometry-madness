@@ -42693,7 +42693,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 47b63ce87a1447e4ea757a20d9f52c0b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.39
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -59180,11 +59180,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2661290859239103822, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000047225576
+      value: -0.000000015468736
       objectReference: {fileID: 0}
     - target: {fileID: 2661290859239103822, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000019714085
+      value: 0.000000006457347
       objectReference: {fileID: 0}
     - target: {fileID: 2661290859239103823, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LookAt
@@ -59248,15 +59248,15 @@ PrefabInstance:
       objectReference: {fileID: 1036504957}
     - target: {fileID: 2661290860358346464, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000033938704
+      value: -0.000000004162805
       objectReference: {fileID: 0}
     - target: {fileID: 2661290860358346464, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000014301071
+      value: 1.7541213e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2661290860358346464, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3558875
+      value: 0.35588747
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02899a44e89fcf44aa68cd2bf77010b0, type: 3}

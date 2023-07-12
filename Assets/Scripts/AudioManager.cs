@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-   private AudioSource AudioSource;
+    private AudioSource AudioSource;
+
     void Start()
     {
         AudioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-  public void ReproducirSonido(AudioClip audio)
-  {
-    AudioSource.PlayOneShot(audio);
-  }
+    public void ReproducirSonido(AudioClip audio, float volume = 1f)
+    {
+        AudioSource.PlayOneShot(audio, volume);
+    }
 }

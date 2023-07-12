@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-     public AudioManager audioManager;
+    public AudioManager audioManager;
     public AudioClip sonidocambio;
     Renderer _playerRenderer;
     GameObject _canvasCountdownColorText;
@@ -42,7 +42,7 @@ public class ChangeColor : MonoBehaviour
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown");
                 colorPickup.GetComponent<ChangeColor>().StopCoroutine("ResetColorCountdown2");
             }
-            audioManager.ReproducirSonido(sonidocambio);
+            audioManager.ReproducirSonido(sonidocambio, 0.52f);
         }
 
         Material pickupColor = gameObject.GetComponent<Renderer>().sharedMaterial;
@@ -67,6 +67,7 @@ public class ChangeColor : MonoBehaviour
             StartCoroutine("ResetColorCountdown");
 
         }
+
         if (_playerRenderer.sharedMaterial == _greenMaterial)
         {
             EnableGreenColliders();

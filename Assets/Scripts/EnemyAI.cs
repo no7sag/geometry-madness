@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
             GameManager.Instance.player.GetComponent<PlayerHealth>().Damage();
             SetCollidersStatus(false);
         }
-        audioManager.ReproducirSonido(sonidogolpe);
+        audioManager.ReproducirSonido(sonidogolpe, 0.4f);
     }
 
     void SetCollidersStatus(bool active)
